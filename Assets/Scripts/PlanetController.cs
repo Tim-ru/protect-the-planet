@@ -13,6 +13,7 @@ public class PlanetController : MonoBehaviour
     {
         currentHealth = maxHealth;
         GameManager = FindObjectOfType<GameManager>();
+        GameManager.UpdatePlanetHPText();
     }
 
     // Update is called once per frame
@@ -35,7 +36,7 @@ public class PlanetController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        GameManager.UpdatePlanetHP();
+        GameManager.UpdatePlanetHPText();
     }
 
     public int GetCurrentHealth()

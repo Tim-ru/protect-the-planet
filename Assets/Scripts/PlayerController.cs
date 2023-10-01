@@ -3,19 +3,39 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Transform planetCenter; // Ссылка на центр планеты
-    public float moveSpeed = 5.0f;
+    public float defaultMoveSpeed = 3.0f;
     public float rotationSpeed = 100.0f; // Скорость вращения игрока
     public float orbitRadius = 10.0f;
-    public int currentHealth;
-    public int maxHealth = 100;
+    private int currentHealth;
+    private int defaultMaxHealth = 30;
+    private int HPUpgradeLevel;
     private GameManager GameManager;
-
-
+    float defaultFireRate = 0.5f; // Новая скорость стрельбы после улучшения
     private void Start()
     {
         GameManager = FindObjectOfType<GameManager>();
-        currentHealth = maxHealth;
+        HPUpgradeLevel = GameManager.healthPointsUpgradeLevel;
+        currentHealth = defaultMaxHealth > 0 ? defaultMaxHealth : 30;
     }
+
+    public void UpdateMaxHealth()
+    {
+        defaultMaxHealth = defaultMaxHealth + GameManager.healthPointsUpgradeLevel * 10;
+        currentHealth = defaultMaxHealth;
+        GameManager.UpdatePlayerHPText();
+    }
+
+    public void UpdateFireRate()
+    {
+        GetComponent<Shooting>().SetFireRate(defaultFireRate - 0.05f * GameManager.fireRateLevel); // Применяем новую скорость стрельбы
+    }
+
+    public void UpdateSpeed()
+    {
+        defaultMoveSpeed += 0.3f * GameManager.speedUpgradeLevel;
+    }
+
+
 
     private void Update()
     {
@@ -35,7 +55,7 @@ public class PlayerController : MonoBehaviour
         float distanceToCursor = moveDirection.magnitude;
 
         // Если расстояние больше некоторого порога (например, 0.1f), устанавливаем направление взгляда игрока
-        if (distanceToCursor > 0.1f)
+        if (distanceToCursor > 0.5f)
         {
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg + 90;
 
@@ -45,7 +65,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Перемещаем игрока в направлении мыши с учетом скорости
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        transform.position += moveDirection * defaultMoveSpeed * Time.deltaTime;
 
         // Ограничиваем расстояние игрока от центра планеты
         Vector3 offsetFromCenter = transform.position - planetCenter.position;
@@ -57,15 +77,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        GameManager.UpdatePlayerHP();
+        GameManager.UpdatePlayerHPText();
     }
 
     public int GetCurrentHealth()
     {
         return currentHealth;
     }
-
 }

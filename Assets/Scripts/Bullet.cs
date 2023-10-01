@@ -5,11 +5,17 @@ public class Bullet : MonoBehaviour
 {
     private float speed = 1f; // Скорость пули
     private Vector3 direction; // Направление движения пули
+    private int baseDamage = 10;
+    private int damageMultiplier;
+    private GameManager GameManager;
+
     // Добавьте метод для установки скорости и направления пули
     public void SetSpeedAndDirection(float bulletSpeed, Vector3 bulletDirection)
     {
         speed = bulletSpeed;
         direction = transform.up; // Нормализуем направление, чтобы сделать его единичным вектором
+        GameManager = FindObjectOfType<GameManager>();
+        damageMultiplier = GameManager.damageUpgradeLevel;
     }
 
     void Update()
@@ -26,7 +32,7 @@ public class Bullet : MonoBehaviour
         // Если это противник, наносим ему урон
         if (enemy != null)
         {
-            enemy.TakeDamage(10);
+            enemy.TakeDamage(baseDamage + damageMultiplier * 10);
         }
 
         // Уничтожаем пулю после попадания

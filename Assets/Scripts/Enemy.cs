@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private PlanetController planet;
     private PlayerController player;
     private Renderer enemyRenderer; // Ссылка на компонент Renderer модели
+    private GameManager GameManager;
 
     public Material maxHealtMaterial; // Материал для здорового состояния
     public Material damagedMaterial; // Материал для состояния полусмерти
@@ -19,6 +20,8 @@ public class Enemy : MonoBehaviour
     public AudioClip hitSound;
     public AudioClip dieSound;
     private AudioSource audioSource;
+
+    private Collider2D enemyCollider;
 
     private bool isDead = false;
 
@@ -29,10 +32,11 @@ public class Enemy : MonoBehaviour
         planet = FindObjectOfType<PlanetController>();
         player = FindObjectOfType<PlayerController>();
         currentHealth = maxHealth;
+        GameManager = FindObjectOfType<GameManager>();
 
         enemyRenderer = GetComponent<Renderer>();
         enemyRenderer.material = maxHealtMaterial;
-
+        enemyCollider = GetComponent<Collider2D>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -118,6 +122,8 @@ public class Enemy : MonoBehaviour
             audioSource.PlayOneShot(dieSound);
         }
         enemyRenderer.enabled = false;
+        enemyCollider.enabled = false;
+        GameManager.UpdateScore(1);
 
         StartCoroutine(DelayedDestroy());
     }
