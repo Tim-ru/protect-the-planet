@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Planet
   - Enemy
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -19,9 +20,9 @@ TagManager:
   - Enemy
   - Planet
   - Post proccessing
+  - Boss
   - 
-  - 
-  - 
+  - Boss Bullets
   - 
   - 
   - 

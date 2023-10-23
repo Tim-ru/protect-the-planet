@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private int HPUpgradeLevel;
     private GameManager GameManager;
     float defaultFireRate = 0.5f; // Новая скорость стрельбы после улучшения
+    public ParticleSystem explosionEffect; // Ссылка на систему частиц взрыва
+
     private void Start()
     {
         GameManager = FindObjectOfType<GameManager>();

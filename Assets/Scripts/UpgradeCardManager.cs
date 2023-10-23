@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UpgradeCardManager : MonoBehaviour
 {
-    public UpgradeCard[] upgradeCardPrefabs; // Массив с префабами карточек улучшений
+    public List<UpgradeCard> upgradeCardPrefabs; // Массив с префабами карточек улучшений
     public Transform cardSpawnPoint; // Точка, где будут появляться карточки
     public GameObject upgradePanel; // Ссылка на панель улучшений
     public Transform cardContainer; // Ссылка на контейнер для карточек
@@ -30,7 +30,7 @@ public class UpgradeCardManager : MonoBehaviour
             // Пока не найдем индекс, который еще не был выбран
             do
             {
-                randomIndex = Random.Range(0, upgradeCardPrefabs.Length);
+                randomIndex = Random.Range(0, upgradeCardPrefabs.Count);
             }
             while (selectedCardIndices.Contains(randomIndex));
 
@@ -54,5 +54,10 @@ public class UpgradeCardManager : MonoBehaviour
             // Добавляем карточку в список отображаемых
             displayedCards.Add(spawnedCard);
         }
+    }
+
+    public void RemoveGunModeCards()
+    {
+        upgradeCardPrefabs.RemoveRange(0, 2);
     }
 }

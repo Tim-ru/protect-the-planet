@@ -54,6 +54,7 @@ public class Shooting : MonoBehaviour
         {
             // Устанавливаем скорость и направление пули
             bulletScript.SetSpeedAndDirection(bulletSpeed, firePoint.up);
+            bulletScript.SetBulletDamage(15);
         }
 
         

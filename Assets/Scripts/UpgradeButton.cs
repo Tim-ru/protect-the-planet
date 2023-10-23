@@ -6,11 +6,14 @@ public class UpgradeButton : MonoBehaviour
     private GameManager GameManager;
     public UpgradeType upgradeType; // Перечисление для разных типов апгрейдов
     public UpgradePanel upgradePanel;
+    private UpgradeCardManager UpgradeCardManager;
+
 
     public void Start()
     {
         GameManager = FindObjectOfType<GameManager>();
-        upgradePanel= FindObjectOfType<UpgradePanel>();
+        upgradePanel = FindObjectOfType<UpgradePanel>();
+        UpgradeCardManager = FindObjectOfType<UpgradeCardManager>();
     }
 
 
@@ -33,12 +36,16 @@ public class UpgradeButton : MonoBehaviour
                 break;
             case UpgradeType.ShotgunMode:
                 GameManager.UpdradeGunMode("shotgun");
+                UpgradeCardManager.RemoveGunModeCards();
                 break;
             case UpgradeType.SniperMode:
                 GameManager.UpdradeGunMode("sniper");
+                UpgradeCardManager.RemoveGunModeCards();
                 break;
         }
+
         GameManager.upgradePoints--;
+
         if (upgradePanel!= null)
         {
             upgradePanel.HideUpgradePanel();

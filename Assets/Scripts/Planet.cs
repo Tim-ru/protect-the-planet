@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlanetController : MonoBehaviour
+public class Planet : MonoBehaviour
 {
     public int maxHealth = 100; // Максимальное здоровье планеты
     public int currentHealth; // Текущее здоровье планеты

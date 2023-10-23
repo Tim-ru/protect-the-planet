@@ -161,6 +161,7 @@ MonoBehaviour:
   defaultMoveSpeed: 3
   rotationSpeed: 720
   orbitRadius: 1.62
+  explosionEffect: {fileID: 0}
 --- !u!50 &108397196
 Rigidbody2D:
   serializedVersion: 4
@@ -199,14 +200,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.49, y: 0.46}
+    oldSize: {x: 3.1, y: 1.5}
     newSize: {x: 0.49, y: 0.46}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.49, y: 0.46}
+  m_Size: {x: 3, y: 1.58}
   m_EdgeRadius: 0
 --- !u!212 &108397198
 SpriteRenderer:
@@ -248,7 +249,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300004, guid: 8aeb9e233fbb8f14db39770841b78b94, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6096b136db47f77418ea5bb5398c726b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -267,8 +268,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108397194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.01, y: 1.17, z: 0}
-  m_LocalScale: {x: 0.9947, y: 0.9832627, z: 1}
+  m_LocalPosition: {x: 1.654, y: -0.509, z: 0}
+  m_LocalScale: {x: 0.24093527, y: 0.24740642, z: 0.27774227}
   m_Children:
   - {fileID: 794439136}
   m_Father: {fileID: 0}
@@ -1036,7 +1037,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674691347}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.73}
+  m_LocalPosition: {x: 0, y: 0, z: 20.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1744,7 +1745,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccaea4ed17e19641acf0456cf9ea935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 2943434822778388386, guid: 645eeb1a8cee8ca4784bd4f380ca0549, type: 3}
+  enemyPrefab: {fileID: 4263851430599709799, guid: dd45d65485dc355498276f294e80eb6a, type: 3}
+  bossPrefab: {fileID: 1049117399574596034, guid: ac3d5b9607cee6648b1ac30e476f65a0, type: 3}
+  planet: {fileID: 1961791748}
 --- !u!4 &1457606066
 Transform:
   m_ObjectHideFlags: 0
@@ -1753,7 +1756,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457606064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1280, y: 720, z: -35}
+  m_LocalPosition: {x: 1280, y: 720, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1784,7 +1787,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603044824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1369672, y: 0.49067318, z: -0.041197006}
+  m_LocalPosition: {x: 2.1369672, y: 0.49067318, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1817,6 +1820,7 @@ MonoBehaviour:
   GameOverScreen: {fileID: 475210031}
   upgradePoints: 0
   upgradePanel: {fileID: 1272789981}
+  EnemySpawner: {fileID: 1457606065}
   GunMode: default
 --- !u!1 &1641000629
 GameObject:
@@ -2014,9 +2018,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.029257536}
   serializedVersion: 2
-  m_Radius: 2.51
+  m_Radius: 2.5392575
 --- !u!212 &1961791746
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2076,7 +2080,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961791744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.015, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 1688688465}

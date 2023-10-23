@@ -7,10 +7,11 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject bossPrefab;
 
-    private float minSpawnTime = 2;
-    private float maxSpawnTime = 3;
+    private float minSpawnTime = 3;
+    private float maxSpawnTime = 5;
     private float timeUntilSpawn;
     private float spawnOffset = 5f; // Расстояние от краев экрана до спавна
+    public Planet planet;
 
     void Awake()
     {
@@ -67,6 +68,13 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnBoss()
     {
         Vector2 spawnPos = GenerateSpawnPos();
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        // Ваш код, который создает экземпляры босса
+        GameObject boss = Instantiate(bossPrefab, spawnPos, Quaternion.identity);
+
+        // Получите компонент Boss из созданного объекта
+        Boss bossComponent = boss.GetComponent<Boss>();
+
+        // Установите ссылку на планету
+        bossComponent.planet = planet; // где planetTransform - ссылка на вашу планету
     }
 }

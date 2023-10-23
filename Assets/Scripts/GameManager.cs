@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI planetHPText;
     public TextMeshProUGUI playerHPText;
     public TextMeshProUGUI playerScoreText;
-    public PlanetController planet;
+    public Planet planet;
     public PlayerController player;
     private int score = 0;
     public int damageUpgradeLevel;
@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     public int fireRateLevel = 1;
     public bool isHaveUpgrade = false;
     public int playerLVL;
-
 
     public GameObject UpgradePanel;
     public GameOverScreen GameOverScreen;
@@ -32,7 +31,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        planet = FindObjectOfType<PlanetController>();
+        planet = FindObjectOfType<Planet>();
         player = FindObjectOfType<PlayerController>();
         playerLVL = 1;
         UpdatePlanetHPText();
@@ -79,7 +78,7 @@ public class GameManager : MonoBehaviour
             upgradePanel.ShowUpgradePanel();
         }
 
-        if(score == 5)
+        if(score % 10 == 0)
         {
             EnemySpawner.SpawnBoss();
         }
