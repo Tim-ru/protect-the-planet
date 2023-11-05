@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
             upgradePanel.ShowUpgradePanel();
         }
 
-        if(score % 10 == 0)
+        if(score == 1)
         {
             EnemySpawner.SpawnBoss();
         }

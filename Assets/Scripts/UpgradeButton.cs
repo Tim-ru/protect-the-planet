@@ -7,11 +7,12 @@ public class UpgradeButton : MonoBehaviour
     public UpgradeType upgradeType; // Перечисление для разных типов апгрейдов
     public UpgradePanel upgradePanel;
     private UpgradeCardManager UpgradeCardManager;
-
+    private Bullet BulletScript;
 
     public void Start()
     {
         GameManager = FindObjectOfType<GameManager>();
+        BulletScript = FindObjectOfType<Bullet>();
         upgradePanel = FindObjectOfType<UpgradePanel>();
         UpgradeCardManager = FindObjectOfType<UpgradeCardManager>();
     }

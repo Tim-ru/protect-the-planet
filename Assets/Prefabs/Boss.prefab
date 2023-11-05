@@ -35,6 +35,7 @@ Transform:
   m_LocalScale: {x: 1.6691238, y: 1.6691238, z: 1.6691238}
   m_Children:
   - {fileID: 4425784570117183550}
+  - {fileID: 5363501412990936608}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -126,11 +127,15 @@ MonoBehaviour:
   damageAmount: 10
   maxHealth: 100
   currentHealth: 0
+  explosionEffect: {fileID: 1596227272224849345, guid: f598027c62ebb5e42a3413b93697270a, type: 3}
+  hitEffect: {fileID: 4726441230790468939, guid: 652604505c3f38e429784159f61e153a, type: 3}
+  hitPoint: {fileID: 5363501412990936608}
   maxHealtMaterial: {fileID: 2100000, guid: cd6817569403de4449f8f72d6fd5f85a, type: 2}
   damagedMaterial: {fileID: 2100000, guid: 5224d6a8ddb5ed5428984dab7f3153c6, type: 2}
   dyingMaterial: {fileID: 2100000, guid: 72aea51a59b4f2a4cb41efa1ce2200c4, type: 2}
   hitSound: {fileID: 8300000, guid: c229afd98d830c8418748265fa2e1ca7, type: 3}
   dieSound: {fileID: 8300000, guid: 69fe76a052a11a147942178f31840df2, type: 3}
+  canBePierced: 0
 --- !u!61 &3538301993198851627
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -361,7 +366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08fc853e86ee4a428de3d0036e493a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
   currentHealth: 0
   attackInterval: 1
   attackDamage: 20
@@ -401,3 +405,33 @@ Transform:
   m_Father: {fileID: 1731729897677523151}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!1 &7509137394461792783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5363501412990936608}
+  m_Layer: 0
+  m_Name: Hit Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5363501412990936608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509137394461792783}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.49999997, z: 0}
+  m_LocalScale: {x: 0.59911674, y: 0.59911674, z: 0.59911674}
+  m_Children: []
+  m_Father: {fileID: 1731729897677523151}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

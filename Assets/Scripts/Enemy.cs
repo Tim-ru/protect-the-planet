@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
     private Collider2D enemyCollider;
 
     private bool isDead = false;
+    public bool canBePierced = false; // Может ли этот противник быть пробит снайперской пулей
 
 
     // Start is called before the first frame update
@@ -109,16 +110,17 @@ public class Enemy : MonoBehaviour
         {
             enemyRenderer.material = damagedMaterial; // Материал для полусмерти
         }
-        if (audioSource != null && hitSound != null)
-        {
-            audioSource.PlayOneShot(hitSound);
-        }
 
-        if (currentHealth> 0)
+        if (currentHealth > 0)
         {
             ParticleSystem hitEffectInstance = Instantiate(hitEffect, hitPoint.position, Quaternion.identity);
             hitEffectInstance.Play();
             Destroy(hitEffectInstance, 3f);
+
+            if (audioSource != null && hitSound != null)
+            {
+                audioSource.PlayOneShot(hitSound);
+            }
         }
     }
 

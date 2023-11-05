@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    public float maxHealth = 500; // Максимальное здоровье босса
-    public float currentHealth;
+    private float maxHealth; // Максимальное здоровье босса
+    private float currentHealth;
     public float attackInterval = 6f; // Интервал между атаками
-    public int attackDamage = 10; // Урон, наносимый атакой босса
+    private int attackDamage = 1; // Урон, наносимый атакой босса
     public float moveSpeed = 2f; // Скорость движения босса
     public Planet planet; // Ссылка на центр планеты
     public Transform attackPoint; // Позиция, откуда будет выпущена пуля
@@ -17,9 +17,11 @@ public class Boss : MonoBehaviour
 
     private bool isDead = false;
     private float nextAttackTime = 0f;
+    private GameManager GameManager;
 
     void Start()
     {
+        maxHealth = 500;
         currentHealth = maxHealth;
         audioSource = GetComponent<AudioSource>();
 
@@ -30,7 +32,7 @@ public class Boss : MonoBehaviour
     void Update()
     {
         // Вычисляем расстояние до планеты
-        float distanceToPlanet = Vector3.Distance(transform.position, planet.transform.position);
+        float distanceToPlanet = Vector3.Distance(transform.position, new Vector3(0, 0, 0));
 
         // Если ближе, чем допустимый радиус, перемещаемся от планеты
         if (distanceToPlanet < maxRadius)
@@ -71,6 +73,8 @@ public class Boss : MonoBehaviour
             if (bulletScript != null)
             {
                 bulletScript.SetBulletDamage(attackDamage);
+                bulletScript.SetSniperBullet(false);
+                bulletScript.SetPenetrateCount(0);
                 // Устанавливаем скорость и направление пули
                 bulletScript.SetSpeedAndDirection(3f, attackPoint.up);
             }

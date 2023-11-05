@@ -589,12 +589,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeCardPrefabs:
+  - {fileID: 327482730651697233, guid: a3f6a3e7ac047c1468725b519cce4e07, type: 3}
+  - {fileID: 7904097192466484795, guid: 24e9ceefd349065488cb4bd962ab906f, type: 3}
   - {fileID: 1787303975726408049, guid: 985c7c64d2b595d43bb9378dbac8da2a, type: 3}
   - {fileID: 8752135701123019480, guid: be1f40b41c70c7d49a31e0ac7d95b262, type: 3}
   - {fileID: 6420409374910557243, guid: ad77f0f2fb3bc6b47be953e2dd31b061, type: 3}
   - {fileID: 7756729717952048607, guid: b00dcce456da665448bb7b140affb4ab, type: 3}
-  - {fileID: 327482730651697233, guid: a3f6a3e7ac047c1468725b519cce4e07, type: 3}
-  - {fileID: 7904097192466484795, guid: 24e9ceefd349065488cb4bd962ab906f, type: 3}
   cardSpawnPoint: {fileID: 355785038}
   upgradePanel: {fileID: 1272789976}
   cardContainer: {fileID: 914117911}

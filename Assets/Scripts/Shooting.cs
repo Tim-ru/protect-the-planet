@@ -56,11 +56,9 @@ public class Shooting : MonoBehaviour
             bulletScript.SetSpeedAndDirection(bulletSpeed, firePoint.up);
             bulletScript.SetBulletDamage(15);
         }
-
         
         audioSource.PlayOneShot(shotSound);
         
-
         Destroy(bullet, 5f);
     }
 
@@ -100,10 +98,12 @@ public class Shooting : MonoBehaviour
 
         if (bulletScript != null)
         {
+            bulletScript.SetPenetrateCount(10);
+            bulletScript.SetSniperBullet(true);
             // Устанавливаем скорость и направление пули
             bulletScript.SetSpeedAndDirection(bulletSpeed * 1.75f, firePoint.up);
+           
         }
-
 
         audioSource.PlayOneShot(shotSound);
 
